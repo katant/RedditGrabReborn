@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y git-core libgnutls28-dev lua5.1 liblua5
 RUN python3 -m pip install setuptools wheel
 RUN python3 -m pip install --upgrade seesaw2 zstandard requests 
 RUN git clone https://github.com/ArchiveTeam/reddit-grab
-RUN ./urls-grab/get-wget-lua.sh
+RUN ./reddit-grab/get-wget-lua.sh
 RUN apt-get autoremove -o APT::Autoremove::RecommendsImportant=0 -o APT::Autoremove::SuggestsImportant=0 -y
-RUN cp wget-at /urls-grab/wget-at
-ENTRYPOINT [ "run-pipeline3", "/urls-grab/pipeline.py", "--disable-web-server" ]
+RUN cp wget-at /reddit-grab/wget-at
+ENTRYPOINT [ "run-pipeline3", "/reddit-grab/pipeline.py", "--disable-web-server" ]
